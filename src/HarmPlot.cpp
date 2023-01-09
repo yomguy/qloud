@@ -77,16 +77,16 @@ void HarmPlot::addCurves(QAbstractAxis *x, QAbstractAxis *y) {
 			continue; // have not more harmonic in IR
 
 		QString name = "Harmonic";
-		name += i;
+		name += QString::number(i);
 		QLineSeries* curve = new QLineSeries(this->chart);
 		curve->setPen(QPen(HARM_COLORS[i]));
 		if (i == 0)
-			appendSeries(curve, x, Qt::AlignBottom, y, Qt::AlignLeft);
+			appendSeries(curve, x, Qt::AlignBottom, "Hz", y, Qt::AlignLeft, "dB");
 		else
 			appendSeries(
 				curve,
-				nullptr, Qt::AlignBottom,
-				nullptr, Qt::AlignLeft
+				nullptr, Qt::AlignBottom, "Hz",
+				nullptr, Qt::AlignLeft, "dB"
 			);
 
 		QList<QPointF> points;

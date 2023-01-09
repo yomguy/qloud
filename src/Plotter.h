@@ -38,17 +38,23 @@ public:
 	void setTitle(const QString& title);
 	QString getTitle();
 
-	void appendSeries(
-		QLineSeries* series,
-		QAbstractAxis* xaxis, Qt::Alignment xalign,
-		QAbstractAxis* yaxis, Qt::Alignment yalign
-	);
+	void appendSeries(QLineSeries* series,
+			QAbstractAxis* xaxis, Qt::Alignment xalign, const QString &xunit,
+			QAbstractAxis* yaxis, Qt::Alignment yalign, const QString &yunit);
 	void removeSeries(QLineSeries* series, QAbstractAxis* yattached);
 
 	virtual bool exportSeries(const QString &filename);
 
 	QChart *chart;
 	QList<QLineSeries*> list;
+
+protected:
+	bool viewportEvent(QEvent *event);
+	void mouseMoveEvent(QMouseEvent *event);
+	double curveYfromX(double x, QLineSeries* series);
+	QList<QString> xUnits;
+	QList<QString> yUnits;
+	QGraphicsLineItem *vLine;
 };
 
 #endif

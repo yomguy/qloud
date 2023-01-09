@@ -44,7 +44,7 @@ SplPlot::SplPlot(
 
 	this->ampCurve = new QLineSeries(this->chart);
 	this->ampCurve->setPen(QPen(AMP_CURVE_COLOR));
-	appendSeries(ampCurve, XAxis, Qt::AlignBottom, YAxis, Qt::AlignLeft);
+	appendSeries(ampCurve, XAxis, Qt::AlignBottom, "Hz", YAxis, Qt::AlignLeft, "dB");
 
 	if(QLCfg::USE_PHASE) {
 		YPAxis = new QValueAxis(this->chart);
@@ -129,8 +129,8 @@ void SplPlot::enablePhase(int state) {
 	if(state) {
 		appendSeries(
 			phaseCurve,
-			nullptr, Qt::AlignBottom,
-			YPAxis, Qt::AlignRight
+			nullptr, Qt::AlignBottom, "Hz",
+			YPAxis, Qt::AlignRight, "°"
 		);
 	} else {
 		removeSeries(phaseCurve, YPAxis);
