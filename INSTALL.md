@@ -5,6 +5,9 @@
 * sndfile ( http://www.mega-nerd.com/libsndfile/ )
 * fftw ( http://www.fftw.org/ )
 
+On Debian based system, install build depencencies:
+
+    sudo apt install qt5-qmake qttools5-dev-tools libqt5charts5-dev
 
 # Installation
 
